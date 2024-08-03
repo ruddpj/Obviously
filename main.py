@@ -14,15 +14,14 @@ blue_pts = 0
 
 file_1 = open("obv_topics.txt", "r", encoding="utf8")
 x, y = 100, 100
-count, ans_i = 1, c_box
+count = 1
 for i in range(3):
     for j in range(3):
         o = file_1.readline()
-        canvas.create_rectangle(x, y, x + 200, y + 200, fill=ans_i, outline="black", tags=f"{count}")
+        canvas.create_rectangle(x, y, x + 200, y + 200, fill=c_box, outline="black", tags=f"b{count}")
         canvas.create_text(x + 100, y + 116, text=f"{count}:\n{o}", font=f_size, fill="white")
         x += 200
         count += 1
-        ans_i = c_box
     x = 100
     y += 200
 file_1.close()
@@ -143,7 +142,7 @@ def cords(get):
         sig = 0
 
     if sig > 1:
-        canvas.itemconfig(f"{topic}", fill="gray")
+        canvas.itemconfig(f"b{topic}", fill="gray")
         open_q_canvas(topic)
 
 
