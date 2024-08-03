@@ -8,6 +8,8 @@ c_box = "blue"
 c_text = "white"
 f_size = "Arial 18"
 b_size = "Arial 32"
+team_1 = "TEAM RED"
+team_2 = "TEAM BLU"
 
 red_pts = 0
 blue_pts = 0
@@ -25,18 +27,18 @@ for i in range(3):
     x = 100
     y += 200
 file_1.close()
-canvas.create_text(200, 900, text=f"TEAM RED: {red_pts}", font=f_size, fill="black", tags=f"red")
-canvas.create_text(600, 900, text=f"TEAM BLU: {red_pts}", font=f_size, fill="black", tags=f"blu")
+canvas.create_text(200, 900, text=f"{team_1}: {red_pts}", font=f_size, fill="black", tags=f"red")
+canvas.create_text(600, 900, text=f"{team_2}: {blue_pts}", font=f_size, fill="black", tags=f"blu")
 
 
 def points_adder(side, pts):
     global red_pts, blue_pts
     if side == 0:
         red_pts += int(pts)
-        canvas.itemconfig("red", text=f"TEAM RED: {str(red_pts)}")
+        canvas.itemconfig("red", text=f"{team_1}: {red_pts}")
     else:
         blue_pts += int(pts)
-        canvas.itemconfig("blu", text=f"TEAM BLU: {str(blue_pts)}")
+        canvas.itemconfig("blu", text=f"{team_2}: {blue_pts}")
 
 
 def q_cords(get, side, new, arr):
