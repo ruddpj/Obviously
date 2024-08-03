@@ -36,14 +36,20 @@ def points_adder(side, pts):
     if side == 0:
         red_pts += int(pts)
         canvas.itemconfig("red", text=f"{team_1}: {red_pts}")
-    else:
+    elif side == 1:
         blue_pts += int(pts)
         canvas.itemconfig("blu", text=f"{team_2}: {blue_pts}")
+    else:
+        return
 
 
 def q_cords(get, side, new, arr):
     a = get.x
     b = get.y
+    rev_col = "blue"
+    if side == 2:
+        rev_col = "snow3"
+    
     if 750 <= b < 800:
         if 300 <= a <= 350:
             new.delete("all")
@@ -58,31 +64,31 @@ def q_cords(get, side, new, arr):
     elif 200 <= a <= 600:
         if 100 < b < 160:
             points_adder(side, arr[0])
-            new.itemconfig(f"a{0}", fill="blue")
+            new.itemconfig(f"a{0}", fill=rev_col)
         elif 160 < b < 220:
             points_adder(side, arr[1])
-            new.itemconfig(f"a{1}", fill="blue")
+            new.itemconfig(f"a{1}", fill=rev_col)
         elif 220 < b < 280:
             points_adder(side, arr[2])
-            new.itemconfig(f"a{2}", fill="blue")
+            new.itemconfig(f"a{2}", fill=rev_col)
         elif 280 < b < 340:
             points_adder(side, arr[3])
-            new.itemconfig(f"a{3}", fill="blue")
+            new.itemconfig(f"a{3}", fill=rev_col)
         elif 340 < b < 400:
             points_adder(side, arr[4])
-            new.itemconfig(f"a{4}", fill="blue")
+            new.itemconfig(f"a{4}", fill=rev_col)
         elif 400 < b < 460:
             points_adder(side, arr[5])
-            new.itemconfig(f"a{5}", fill="blue")
+            new.itemconfig(f"a{5}", fill=rev_col)
         elif 460 < b < 520:
             points_adder(side, arr[6])
-            new.itemconfig(f"a{6}", fill="blue")
+            new.itemconfig(f"a{6}", fill=rev_col)
         elif 520 < b < 580:
             points_adder(side, arr[7])
-            new.itemconfig(f"a{7}", fill="blue")
+            new.itemconfig(f"a{7}", fill=rev_col)
         elif 580 < b < 640:
             points_adder(side, arr[8])
-            new.itemconfig(f"a{8}", fill="blue")
+            new.itemconfig(f"a{8}", fill=rev_col)
 
 
 def open_q_canvas(tp):
@@ -94,6 +100,7 @@ def open_q_canvas(tp):
 
     new_c.bind("<Button-1>", lambda event: q_cords(event, 0, new_c, pts_cat))
     new_c.bind("<Button-3>", lambda event: q_cords(event, 1, new_c, pts_cat))
+    new_c.bind("<Button-2>", lambda event: q_cords(event, 2, new_c, pts_cat))
 
     f, g = 200, 100
     new_c.create_text(400, 70, text=f"{file_2.readline()}", font="Arial 24", fill="black")
